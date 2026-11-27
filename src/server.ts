@@ -1,12 +1,16 @@
 import express from "express";
-import { error } from "node:console";
+import morgan from "morgan";
 
 const app = express();
 const port = 3000;
 
+// middlewares
+app.use(morgan("tiny"));
+app.use(express.json());
+
 app.listen(port, (error) => {
   if (error) {
-    console.log("Couldn't start server", error);
+    console.error("Couldn't start server", error);
     return;
   }
 
